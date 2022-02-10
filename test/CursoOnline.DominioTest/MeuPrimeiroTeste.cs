@@ -20,5 +20,19 @@ namespace CursoOnline.DominioTest
             //Assert
             Assert.Equal(variavel1, variavel2);
         }
+
+        [Fact(DisplayName = "Variavel2MustBeEqualToVariavel3")]
+        public void Variavel2MustBeEqualToVariavel3()
+        {
+            //Arrange
+            var variavel2 = 1;
+            var variavel3 = 1;
+
+            //Action
+            variavel2 = variavel3;
+
+            //Assert
+            Assert.Equal(variavel2, variavel3);
+        }
     }
 }
