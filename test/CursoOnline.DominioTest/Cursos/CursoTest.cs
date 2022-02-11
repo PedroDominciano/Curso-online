@@ -26,6 +26,24 @@ namespace CursoOnline.DominioTest.Cursos
             Assert.Equal(valor, curso.Valor);
 
         }
+
+        [Fact]
+        public void DeveGerarErroCasoInformarAlgoEmBranco()
+        {
+            //Arranje
+            const string nome = "";
+            const double cargaHoraria = 0;
+            const string publicoAlvo = "";
+            const double valor = 0;
+
+            //Action
+            var curso = new Curso(nome, cargaHoraria, publicoAlvo, valor);
+            var bInformacesValidas = curso.ValidarInformacoes();
+
+            //Assert
+            Assert.False(bInformacesValidas);
+
+        }
     }
 
     public class Curso
@@ -36,6 +54,11 @@ namespace CursoOnline.DominioTest.Cursos
             CargaHoraria = cargaHoraria;
             PublicoAlvo = publicoAlvo;
             Valor = valor;
+        }
+
+        public bool ValidarInformacoes()
+        {
+            return ((Nome != "") && (CargaHoraria != 0) && (PublicoAlvo != "") && (Valor != 0));
         }
 
         public string Nome { get; private set; }
